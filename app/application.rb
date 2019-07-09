@@ -18,12 +18,21 @@ class Application
     end
 
     resp.finish
-  end
+
+  def call2(env)
+    resp = Rack::Response.new
+    req = Rack::Request.new(env)
   
   if req.path.match(/cart/)
-    @@cart 
-  else 
+    if !@@cart.empty?
+      resp.write "#{@@cart}"
+    else 
     resp.write "Your cart is empty"
+    end 
+  else 
+    resp.write "Path Not Found"
+  end 
+    resp.finish
   end 
   
 
