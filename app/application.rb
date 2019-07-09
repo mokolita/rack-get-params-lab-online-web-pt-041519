@@ -19,6 +19,13 @@ class Application
 
     resp.finish
   end
+  
+  if req.path.match(/cart/)
+    @@cart 
+  else 
+    resp.write "Your cart is empty"
+  end 
+  
 
   def handle_search(search_term)
     if @@items.include?(search_term)
