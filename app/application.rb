@@ -18,7 +18,8 @@ class Application
     end
 
     resp.finish
-
+  end 
+  
   def call2(env)
     resp = Rack::Response.new
     req = Rack::Request.new(env)
